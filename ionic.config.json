@@ -1,0 +1,7 @@
+{
+  "name": "proyectoVotaciones",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
