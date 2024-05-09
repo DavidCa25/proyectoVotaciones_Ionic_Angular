@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgApexchartsModule
   ],
   declarations: [HomePage]
 })

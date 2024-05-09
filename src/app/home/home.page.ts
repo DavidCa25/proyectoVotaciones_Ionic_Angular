@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Candidato } from '../models/candidato';
 import { CandidatoService } from '../services/candidato.service';
 import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 export class HomePage implements OnInit{
   listCandidatos: Candidato[] = []
 
+
   constructor(private _candidatoServices: CandidatoService) {
+   
     this.obtenerCandidatos();
   }
 

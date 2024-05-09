@@ -3,12 +3,12 @@ import { Propuesta } from "./propuesta";
 export class Candidato{
     _id?: number;
     candidato: String;
-    propuesta: Propuesta[];
+    propuestas: Propuesta[];
     voto: number;
 
-    constructor(_candidato: String, _propuesta: Propuesta[], _voto: number){
+    constructor(_candidato: String, _propuestas: Propuesta[], _voto: number){
         this.candidato = _candidato,
-        this.propuesta = _propuesta;
+        this.propuestas = _propuestas;
         this.voto = _voto;
     }
 }
