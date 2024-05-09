@@ -7,14 +7,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>Partido de la Educacion</ion-card-title>
+      </ion-card-header> 
+  <ion-card-content>
+    <ion-list>
+      <ion-card>
+      <ion-item *ngFor="let candidatoI of listCandidatos">
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </ion-thumbnail>
+        <ion-label>{{candidatoI.candidato}}</ion-label>
+        
+      </ion-item>
+      <ion-button fill="outline">Outline</ion-button>
+      <ion-button fill="outline">Outline</ion-button>
+      </ion-card>  
+    </ion-list>
+  </ion-card-content>
+</ion-card>
 </ion-content>
