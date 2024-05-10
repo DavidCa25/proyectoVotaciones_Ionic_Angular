@@ -8,10 +8,16 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    NgApexchartsModule
+  ],
   providers: [
     provideHttpClient(withFetch()),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}

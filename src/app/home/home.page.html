@@ -40,12 +40,16 @@
           <ion-button (click)="setOpen(false)">Close</ion-button>
         </ion-buttons>
       </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding" *ngFor="let candidatoI of listCandidatos">
-      <p>
-        {{candidatoI.propuestas}}
-      </p>
-    </ion-content>
+    </ion-header>  
+      <ion-content class="ion-padding" >
+        <ion-list>
+        <ion-item *ngFor="let candidato of listCandidatos">
+          <ion-item *ngFor="let propuesta of candidato.propuestas">
+              <ion-label>{{propuesta.titulo}}</ion-label>
+          </ion-item>
+        </ion-item>
+      </ion-list>
+    </ion-content>   
   </ng-template>
 </ion-modal>
 <ion-modal [isOpen]="isModalOpenV">
@@ -53,6 +57,16 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Encuestas</ion-title>
+        <ion-card>
+          <div style="text-align:center">
+            <apx-chart
+              [series]="chartOptions.series!"
+              [chart]="chartOptions.chart!"
+              [xaxis]="chartOptions.xaxis!"
+              [title]="chartOptions.title!"
+            ></apx-chart>
+          </div>
+        </ion-card>
         <ion-buttons slot="end">
           <ion-button (click)="setOpen1(false)">Close</ion-button>
         </ion-buttons>

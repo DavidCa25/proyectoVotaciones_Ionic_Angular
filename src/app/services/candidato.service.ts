@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class CandidatoService{
 
-    url = 'https://838f-207-249-176-126.ngrok-free.app/api/candidatos'
+    url = 'http://localhost:4000/api/candidatos'
 
     constructor(private http: HttpClient) {}
 
