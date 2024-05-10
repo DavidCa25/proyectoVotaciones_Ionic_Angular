@@ -12,6 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomePage implements OnInit{
   listCandidatos: Candidato[] = []
+  isModalOpen = false;
+  isModalOpenV = false;
 
 
   constructor(private _candidatoServices: CandidatoService) {
@@ -19,6 +21,7 @@ export class HomePage implements OnInit{
     this.obtenerCandidatos();
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
    
   }
@@ -38,4 +41,15 @@ export class HomePage implements OnInit{
         console.log(error);
     })
   }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+
+  }
+
+  setOpen1(isOpen: boolean) {
+    this.isModalOpenV = isOpen;
+
+  }
+
 }

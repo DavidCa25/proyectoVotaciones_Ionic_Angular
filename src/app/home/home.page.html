@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-row>
     <ion-col size="3">
-  <ion-card>
+  <ion-card class="ion-rouded" class="elevation-8">
       <ion-card-header>
         <ion-card-title>Partido de la Educacion</ion-card-title>
       </ion-card-header> 
@@ -23,53 +23,49 @@
         <ion-label>{{candidatoI.candidato}}</ion-label>
         
       </ion-item>
-      <ion-button fill="outline">Detalle</ion-button>
-      <ion-button fill="outline">Votar</ion-button>
+      <ion-button fill="outline" (click)="setOpen(true)">Detalle</ion-button>
+      <ion-button fill="outline" (click)="setOpen1(true)">Votar</ion-button>
       <ion-button>
         <ion-icon name="trash"></ion-icon></ion-button>
       </ion-card>  
     </ion-list>
   </ion-card-content>
 </ion-card>
-  </ion-col>
-  <ion-col size="3">
-    <ion-card>
-        <ion-card-header>
-          <ion-card-title>Propuesta</ion-card-title>
-        </ion-card-header> 
-    <ion-card-content>
-      <ion-list>
-        <ion-card>
-        <ion-item *ngFor="let candidatoI of listCandidatos">
-          
-          <ion-label>{{candidatoI.propuestas}}</ion-label>
-          
-        </ion-item>
-        
-        </ion-card>  
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-    </ion-col>
-    <ion-col size="3">
-      <ion-card>
-          <ion-card-header>
-            <ion-card-title>Encuestas</ion-card-title>
-          </ion-card-header> 
-      <ion-card-content>
-        <ion-list>
-          <ion-card>
-          <ion-item >
-            
-            
-            
-          </ion-item>
-          
-          </ion-card>  
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-      </ion-col>
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Propuesta</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding" *ngFor="let candidatoI of listCandidatos">
+      <p>
+        {{candidatoI.propuestas}}
+      </p>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+<ion-modal [isOpen]="isModalOpenV">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Encuestas</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen1(false)">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adip
+      </p>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+</ion-col>
 </ion-row>
 
 </ion-content>
