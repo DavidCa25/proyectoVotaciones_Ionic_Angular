@@ -24,6 +24,7 @@ export class HomePage implements OnInit{
   }
   obtenerCandidatos(){
     this._candidatoServices.getCandidatos().subscribe(data => {
+      
         this.listCandidatos = data;
     }, error =>{
         console.log(error)
