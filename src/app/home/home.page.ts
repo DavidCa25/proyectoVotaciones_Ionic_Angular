@@ -35,7 +35,7 @@ export class HomePage implements OnInit{
     series: [
       {
         name: "My-series",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        data: [],
       }
     ],
     chart: {
@@ -69,9 +69,18 @@ export class HomePage implements OnInit{
         console.log(candidatos);
         this.listCandidatos = candidatos;
         // Extracting candidate names to use as categories for the chart
-      const categories = this.listCandidatos.map(candidato => candidato.candidato);
+      const categories = this.listCandidatos.map(candidato => {
+        const nombreParts = candidato.candidato.split(' ');
+        // Taking the first part as the first name
+        return nombreParts[0]
+      });
       // Assigning categories to chartOptions
       this.chartOptions.xaxis = { categories };
+
+       // Building data for the chart series based on candidate votes
+       const data = this.listCandidatos.map(candidato => candidato.voto);
+       // Assigning data to chartOptions
+       this.chartOptions.series = [{ data }];
       },
       error => {
         console.error('Error en la solicitud:', error);
