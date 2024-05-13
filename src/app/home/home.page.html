@@ -24,8 +24,8 @@
                 </ion-thumbnail>                           
               <ion-label>{{candidato.candidato}}</ion-label> 
               <ion-button fill="outline" (click)="setCandidatoSeleccionado(candidato)">Detalle</ion-button>
-              <ion-button (click)="setOpen1(true)">Votar</ion-button>             
-              <i class="fas fa-solid fa-trash text-danger"><ion-icon (click)="eliminarCandidato(candidato._id)"></ion-icon></i>                 
+              <ion-button (click)="votarPorCandidato(candidato._id)">Votar</ion-button>             
+              <ion-button shape="round" (click)="eliminarCandidato(candidato._id)"><ion-icon name="trash"></ion-icon></ion-button>                 
             </ion-item>              
            
         </ion-card>         

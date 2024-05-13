@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class CandidatoService{
 
-    url = 'https://o9u7w7p3sby2.share.zrok.io/api/candidatos/'
+    url = 'https://75hdq3d1rac9.share.zrok.io/api/candidatos/'
 
     constructor(private http: HttpClient) {}
 
@@ -21,8 +21,8 @@ export class CandidatoService{
     obtenerCandidatoPorId(id:string): Observable<any>{
         return this.http.get(this.url + id);
     }
-    votarPorCandidato(id:string, voto: number): Observable<any>{
-        return this.http.put(this.url + id, voto);
+    votarPorCandidato(id:string): Observable<any>{
+        return this.http.put(this.url + id, {});
     }
     
 }

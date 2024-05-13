@@ -68,18 +68,17 @@ export class HomePage implements OnInit{
       candidatos => {
         console.log(candidatos);
         this.listCandidatos = candidatos;
-        // Extracting candidate names to use as categories for the chart
-      const categories = this.listCandidatos.map(candidato => {
+        const categories = this.listCandidatos.map(candidato => {
         const nombreParts = candidato.candidato.split(' ');
-        // Taking the first part as the first name
+       
         return nombreParts[0]
       });
-      // Assigning categories to chartOptions
+      
       this.chartOptions.xaxis = { categories };
 
-       // Building data for the chart series based on candidate votes
+       
        const data = this.listCandidatos.map(candidato => candidato.voto);
-       // Assigning data to chartOptions
+       
        this.chartOptions.series = [{ data }];
       },
       error => {
@@ -92,15 +91,18 @@ export class HomePage implements OnInit{
       }
     );
   }
-  votarPorCandidato(id: string, voto:number): void {
-    this._candidatoServices.votarPorCandidato(id, voto).subscribe(
+  votarPorCandidato(id: any): void {
+    this._candidatoServices.votarPorCandidato(id).subscribe(
       () => {
         this.obtenerCandidatos();
+        
       },
       error => {
         console.error('Error al votar por el candidato:', error);
       }
+      
     );
+    this.setOpen1(true);
   }
   
   
@@ -119,7 +121,7 @@ export class HomePage implements OnInit{
   }
   setCandidatoSeleccionado(candidato: Candidato) {
     this.candidatoSeleccionado = candidato;
-    this.setOpen(true); // Abre el modal cuando se selecciona un candidato
+    this.setOpen(true); 
   }
 
 
