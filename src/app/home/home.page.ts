@@ -27,14 +27,15 @@ export class HomePage implements OnInit{
   listCandidatos: Candidato[] = []
   isModalOpen = false;
   isModalOpenV = false;
+  candidatoSeleccionado!: Candidato;
+  @ViewChild("chart") chart!: ChartComponent;
 
-  @ViewChild("chart")
-  chart!: ChartComponent;
+  
   public chartOptions: Partial<ChartOptions> = {
     series: [
       {
         name: "My-series",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
       }
     ],
     chart: {
@@ -45,11 +46,11 @@ export class HomePage implements OnInit{
       text: "My First Angular Chart"
     },
     xaxis: {
-      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
+      categories: [this.obtenerCandidatos()]
     }
   };
-  
 
+  
 
 
   constructor(private _candidatoServices: CandidatoService) {
@@ -61,16 +62,37 @@ export class HomePage implements OnInit{
   ngOnInit(): void {
    
   }
-  obtenerCandidatos(){
-    this._candidatoServices.getCandidatos().subscribe(data => {
-      
-        this.listCandidatos = data;
-    }, error =>{
-        console.log(error)
-    })
+  obtenerCandidatos() {
+    console.log('URL de la solicitud:', this._candidatoServices.url);
+    this._candidatoServices.getCandidatos().subscribe(
+      candidatos => {
+        console.log(candidatos);
+        this.listCandidatos = candidatos;
+      },
+      error => {
+        console.error('Error en la solicitud:', error);
+        if (error.error instanceof ErrorEvent) {
+          console.error('Error del lado del cliente:', error.error.message);
+        } else {
+          console.error(`Código de error ${error.status}, cuerpo: `, error.error);
+        }
+      }
+    );
   }
+  votarPorCandidato(id: string, voto:number): void {
+    this._candidatoServices.votarPorCandidato(id, voto).subscribe(
+      () => {
+        this.obtenerCandidatos();
+      },
+      error => {
+        console.error('Error al votar por el candidato:', error);
+      }
+    );
+  }
+  
+  
   eliminarCandidato(id: any){
-    this._candidatoServices.eliminarCandidatos(id).subscribe(data => {
+    this._candidatoServices.eliminarCandidatos(id).subscribe(() => {
       this.obtenerCandidatos();
       
     }, error =>{
@@ -82,6 +104,12 @@ export class HomePage implements OnInit{
     this.isModalOpen = isOpen;
 
   }
+  setCandidatoSeleccionado(candidato: Candidato) {
+    this.candidatoSeleccionado = candidato;
+    this.setOpen(true); // Abre el modal cuando se selecciona un candidato
+  }
+
+
 
   setOpen1(isOpen: boolean) {
     this.isModalOpenV = isOpen;
