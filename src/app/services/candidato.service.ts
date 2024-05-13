@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class CandidatoService{
 
-    url = 'https://o9u7w7p3sby2.share.zrok.io/api/candidatos'
+    url = 'https://o9u7w7p3sby2.share.zrok.io/api/candidatos/'
 
     constructor(private http: HttpClient) {}
 

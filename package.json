@@ -28,6 +28,7 @@
     "@capacitor/status-bar": "6.0.0",
     "@ionic/angular": "^8.0.0",
     "apexcharts": "^3.49.0",
+    "bootstrap": "^5.3.3",
     "ionicons": "^7.0.0",
     "ng-apexcharts": "^1.10.0",
     "ngx-toastr": "^18.0.0",
