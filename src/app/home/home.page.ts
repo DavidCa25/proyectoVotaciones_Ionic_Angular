@@ -68,6 +68,10 @@ export class HomePage implements OnInit{
       candidatos => {
         console.log(candidatos);
         this.listCandidatos = candidatos;
+        // Extracting candidate names to use as categories for the chart
+      const categories = this.listCandidatos.map(candidato => candidato.candidato);
+      // Assigning categories to chartOptions
+      this.chartOptions.xaxis = { categories };
       },
       error => {
         console.error('Error en la solicitud:', error);
