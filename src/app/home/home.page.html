@@ -13,7 +13,7 @@
         <ion-col size="auto"> <!-- Columna con tamaño automático -->
           <ion-card class="ion-rouded" class="elevation-8" *ngFor="let candidato of listCandidatos"> <!-- Tarjeta redondeada con sombra -->
             <ion-card-header> <!-- Encabezado de la tarjeta -->
-              <ion-card-title>Partido de la Educacion</ion-card-title> <!-- Título de la tarjeta -->
+              <ion-card-title>{{candidato.partido}}</ion-card-title> <!-- Título de la tarjeta -->
             </ion-card-header> 
             <ion-card-content> <!-- Contenido de la tarjeta -->
               <ion-item style="display: flex; align-items: center;">
