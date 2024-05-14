@@ -16,10 +16,12 @@
               <ion-card-title>Partido de la Educacion</ion-card-title> <!-- Título de la tarjeta -->
             </ion-card-header> 
             <ion-card-content> <!-- Contenido de la tarjeta -->
-              <ion-thumbnail slot="start"> <!-- Miniatura al principio del elemento -->
-                <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" /> <!-- Imagen de la miniatura -->
-              </ion-thumbnail>                           
-              <ion-label>{{candidato.candidato}}</ion-label> <!-- Etiqueta con el nombre del candidato -->
+              <ion-item style="display: flex; align-items: center;">
+                <ion-thumbnail slot="start" style="margin-right: 16px;"> <!-- Miniatura al principio del elemento -->
+                  <img [src]="(candidato.imgFoto)" /> <!-- Imagen de la miniatura -->
+                </ion-thumbnail>                           
+                <ion-label>{{candidato.candidato}}</ion-label> <!-- Etiqueta con el nombre del candidato -->
+              </ion-item>
               <ion-button fill="outline" (click)="setCandidatoSeleccionado(candidato)">Detalle</ion-button> <!-- Botón para ver detalles del candidato -->
               <ion-button (click)="votarPorCandidato(candidato._id)">Votar</ion-button> <!-- Botón para votar por el candidato -->
               <ion-button shape="round" (click)="eliminarCandidato(candidato._id)"><ion-icon name="trash"></ion-icon></ion-button> <!-- Botón para eliminar el candidato -->
