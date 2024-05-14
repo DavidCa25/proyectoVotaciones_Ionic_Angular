@@ -1,4 +1,6 @@
+// Importación del modelo de Propuesta
 import { Propuesta } from "./propuesta";
+
 
 export class Candidato{
     _id?: number;
@@ -12,5 +14,7 @@ export class Candidato{
         this.propuestas = _propuestas;
         this.voto = _voto;
         this.imgFoto = _imgFoto;
+
+// Definición de la clase Candidato
     }
 }

@@ -1,20 +1,21 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true"> <!-- Cabecera translúcida -->
   <ion-toolbar>
     <ion-title>
-      Blank
+     App Votaciones <!-- Título de la página -->
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-<ion-grid [fixed]="true">
-  <ion-row>
-    <ion-col size="3">
-      <ion-col size="auto">
-        <ion-card class="ion-rouded" class="elevation-8">
-            <ion-card-header>
-              <ion-card-title>Partido de la Educacion</ion-card-title>
+<ion-content [fullscreen]="true"> <!-- Contenido de pantalla completa -->
+  <ion-grid [fixed]="true"> <!-- Grid fijo -->
+    <ion-row> <!-- Fila -->
+      <ion-col size="3"> <!-- Columna con tamaño 3 (en una escala de 12) -->
+        <ion-col size="auto"> <!-- Columna con tamaño automático -->
+          <ion-card class="ion-rouded" class="elevation-8"> <!-- Tarjeta redondeada con sombra -->
+            <ion-card-header> <!-- Encabezado de la tarjeta -->
+              <ion-card-title>Partido de la Educacion</ion-card-title> <!-- Título de la tarjeta -->
             </ion-card-header> 
+
         <ion-card-content>           
       <ion-list>            
         <ion-card>               
@@ -49,40 +50,77 @@
                 <ion-list>
                   <ion-item *ngFor="let propuesta of candidatoSeleccionado?.propuestas">
                     <ion-label>{{propuesta.titulo}}</ion-label>               
+
+            <ion-card-content> <!-- Contenido de la tarjeta -->
+              <ion-list> <!-- Lista -->
+                <ion-card> <!-- Tarjeta dentro de la lista -->
+                  <!-- Iteración sobre la lista de candidatos -->
+                  <ion-item *ngFor="let candidato of listCandidatos"> <!-- Elemento de la lista -->
+                    <ion-thumbnail slot="start"> <!-- Miniatura al principio del elemento -->
+                      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" /> <!-- Imagen de la miniatura -->
+                    </ion-thumbnail>                           
+                    <ion-label>{{candidato.candidato}}</ion-label> <!-- Etiqueta con el nombre del candidato -->
+                    <ion-button fill="outline" (click)="setCandidatoSeleccionado(candidato)">Detalle</ion-button> <!-- Botón para ver detalles del candidato -->
+                    <ion-button (click)="votarPorCandidato(candidato._id)">Votar</ion-button> <!-- Botón para votar por el candidato -->
+                    <ion-button shape="round" (click)="eliminarCandidato(candidato._id)"><ion-icon name="trash"></ion-icon></ion-button> <!-- Botón para eliminar el candidato -->
+                  </ion-item>              
+                </ion-card>         
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <!-- Modal para mostrar propuestas del candidato seleccionado -->
+        <ion-modal [isOpen]="isModalOpen"> <!-- Modal abierto si isModalOpen es true -->
+          <ng-template>
+            <ion-header> <!-- Encabezado del modal -->
+              <ion-toolbar>
+                <ion-title>Propuesta</ion-title> <!-- Título del modal -->
+                <ion-buttons slot="end">
+                  <ion-button (click)="setOpen(false)">Close</ion-button> <!-- Botón para cerrar el modal -->
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>  
+            <ion-content class="ion-padding">
+              <ion-list> <!-- Lista de propuestas -->
+                <ion-list> <!-- Lista anidada para mostrar las propuestas -->
+                  <!-- Iteración sobre las propuestas del candidato seleccionado -->
+                  <ion-item *ngFor="let propuesta of candidatoSeleccionado?.propuestas"> <!-- Elemento de la lista para cada propuesta -->
+                    <ion-label>{{propuesta.titulo}}</ion-label> <!-- Etiqueta con el título de la propuesta -->
+
                   </ion-item>
                 </ion-list>
-              
-            </ion-list>
-          
-          </ion-content>   
-  </ng-template>
-  </ion-modal>
-  <ion-modal [isOpen]="isModalOpenV">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Encuestas</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="setOpen1(false)">Close</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-card>
-          <div style="text-align:center">
-            
-            <apx-chart
-              [series]="chartOptions.series!"
-              [chart]="chartOptions.chart!"
-              [xaxis]="chartOptions.xaxis!"
-              [title]="chartOptions.title!"
-            ></apx-chart>
-          </div>
-        </ion-card>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-  </ion-col>
-  </ion-row>
+              </ion-list>
+            </ion-content>   
+          </ng-template>
+        </ion-modal>
+        <!-- Modal para mostrar encuestas -->
+        <ion-modal [isOpen]="isModalOpenV"> <!-- Modal abierto si isModalOpenV es true -->
+          <ng-template>
+            <ion-header> <!-- Encabezado del modal -->
+              <ion-toolbar>
+                <ion-title>Encuestas</ion-title> <!-- Título del modal -->
+                <ion-buttons slot="end">
+                  <ion-button (click)="setOpen1(false)">Close</ion-button> <!-- Botón para cerrar el modal -->
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content>
+              <ion-card> <!-- Tarjeta para mostrar gráfico de encuestas -->
+                <div style="text-align:center">
+                  <!-- Componente de gráfico -->
+                  <apx-chart
+                    [series]="chartOptions.series!"
+                    [chart]="chartOptions.chart!"
+                    [xaxis]="chartOptions.xaxis!"
+                    [title]="chartOptions.title!"
+                  ></apx-chart>
+                </div>
+              </ion-card>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
+
