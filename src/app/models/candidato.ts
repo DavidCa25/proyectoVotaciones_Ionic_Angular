@@ -5,10 +5,12 @@ export class Candidato{
     candidato: String;
     propuestas: Propuesta[];
     voto: number;
+    imgFoto:string;
 
-    constructor(_candidato: String, _propuestas: Propuesta[], _voto: number){
+    constructor(_candidato: String, _propuestas: Propuesta[], _voto: number, _imgFoto:string){
         this.candidato = _candidato,
         this.propuestas = _propuestas;
         this.voto = _voto;
+        this.imgFoto = _imgFoto;
     }
 }

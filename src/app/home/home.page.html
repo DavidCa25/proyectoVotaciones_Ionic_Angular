@@ -20,7 +20,7 @@
         <ion-card>               
             <ion-item *ngFor="let candidato of listCandidatos">
                 <ion-thumbnail slot="start">
-                  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+                  <img [src]="candidato.imgFoto" />
                 </ion-thumbnail>                           
               <ion-label>{{candidato.candidato}}</ion-label> 
               <ion-button fill="outline" (click)="setCandidatoSeleccionado(candidato)">Detalle</ion-button>
