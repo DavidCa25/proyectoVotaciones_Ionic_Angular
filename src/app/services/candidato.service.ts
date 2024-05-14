@@ -8,7 +8,7 @@ import { Observable } from 'rxjs'; // Importación de Observable desde RxJS
 })
 export class CandidatoService { // Definición de la clase CandidatoService
 
-    url = 'https://75hdq3d1rac9.share.zrok.io/api/candidatos/'; // URL base para las solicitudes al backend
+    url = 'https://oi51au0pcdzj.share.zrok.io/api/candidatos/'; // URL base para las solicitudes al backend
 
 
 
