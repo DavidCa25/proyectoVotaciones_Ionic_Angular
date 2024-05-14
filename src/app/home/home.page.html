@@ -1,7 +1,7 @@
 <ion-header [translucent]="true"> <!-- Cabecera translúcida -->
   <ion-toolbar>
     <ion-title>
-     App Votaciones <!-- Título de la página -->
+      Blank <!-- Título de la página -->
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,42 +15,6 @@
             <ion-card-header> <!-- Encabezado de la tarjeta -->
               <ion-card-title>Partido de la Educacion</ion-card-title> <!-- Título de la tarjeta -->
             </ion-card-header> 
-
-        <ion-card-content>           
-      <ion-list>            
-        <ion-card>               
-            <ion-item *ngFor="let candidato of listCandidatos">
-                <ion-thumbnail slot="start">
-                  <img [src]="candidato.imgFoto" />
-                </ion-thumbnail>                           
-              <ion-label>{{candidato.candidato}}</ion-label> 
-              <ion-button fill="outline" (click)="setCandidatoSeleccionado(candidato)">Detalle</ion-button>
-              <ion-button (click)="votarPorCandidato(candidato._id)">Votar</ion-button>             
-              <ion-button shape="round" (click)="eliminarCandidato(candidato._id)"><ion-icon name="trash"></ion-icon></ion-button>                 
-            </ion-item>              
-           
-        </ion-card>         
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-</ion-col>
-  <ion-modal [isOpen]="isModalOpen">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Propuesta</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="setOpen(false)">Close</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>  
-          <ion-content class="ion-padding" >
-              
-              <ion-list>         
-                <ion-list>
-                  <ion-item *ngFor="let propuesta of candidatoSeleccionado?.propuestas">
-                    <ion-label>{{propuesta.titulo}}</ion-label>               
-
             <ion-card-content> <!-- Contenido de la tarjeta -->
               <ion-list> <!-- Lista -->
                 <ion-card> <!-- Tarjeta dentro de la lista -->
@@ -86,7 +50,6 @@
                   <!-- Iteración sobre las propuestas del candidato seleccionado -->
                   <ion-item *ngFor="let propuesta of candidatoSeleccionado?.propuestas"> <!-- Elemento de la lista para cada propuesta -->
                     <ion-label>{{propuesta.titulo}}</ion-label> <!-- Etiqueta con el título de la propuesta -->
-
                   </ion-item>
                 </ion-list>
               </ion-list>
@@ -123,4 +86,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
